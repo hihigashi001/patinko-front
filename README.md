@@ -1,34 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# volta + react + next + tailwindcss + jotai template
+## 作成日
+2022/01/17
 
-## Getting Started
+## 作成経緯
+初代テンプレートが古くなっていたため
 
-First, run the development server:
+## このtemplate作った方法
+volta install node@16.13.2
+volta install yarn@1.22.17
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+yarn create next-app --typescript
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+volta pin node@16.13.2
+volta pin yarn@1.22.17
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+mkdir src
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+mv pages src/
+mv styles src/
+mkdir src/types
+mkdir src/states
+mkdir src/layouts
+mkdir src/components
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+tsconfig.jsonに以下を追加
+   "baseUrl": "."
 
-## Learn More
+＝＝＝
+src/pages/_document.tsxを作成
 
-To learn more about Next.js, take a look at the following resources:
+＝＝＝
+index.tsx の整理
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+＝＝＝
+不要なファイルを削除
+rm src/styles/Home.module.css
+rm src/pages/api
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+＝＝＝
+Tailwind CSS の導入
+yarn add -D tailwindcss@latest postcss@latest autoprefixer@latest
+npx tailwindcss init -p
+tailwind.config.js の編集
+globals.css の編集
+yarn add -D eslint-plugin-tailwindcss
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+＝＝＝
+jotaiの導入
+yarn add jotai
