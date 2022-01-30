@@ -6,7 +6,7 @@ const App = (props: AppProps) => {
   return (
     <>
       <Head>
-        <title>EXA</title>
+        <title>patinko system</title>
       </Head>
       <props.Component {...props.pageProps} />
     </>
