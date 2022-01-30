@@ -1,42 +1,7 @@
 import React from 'react'
 import { useTable, useSortBy } from 'react-table'
 
-export const Table = ({ data }) => {
-  const columns = [
-    {
-      Header: "現在の回転数",
-      accessor: "now_roud_count",
-    },
-    {
-      Header: "当り回数",
-      accessor: "bonus",
-    },
-    {
-      Header: "游タイム",
-      accessor: "yuu_time",
-    },
-    {
-      Header: "台番号",
-      accessor: "dai_number",
-    },
-    {
-      Header: "機種名",
-      accessor: "model_name",
-    },
-    {
-      Header: "総回転数",
-      accessor: "total_round_count",
-    },
-    {
-      Header: "出玉",
-      accessor: "last_dedama",
-    },
-    {
-      Header: "回転率",
-      accessor: "round_per_en",
-    },
-  ];
-  
+export const Table = ({ columns, data }) => {
   const {
     getTableProps,
     getTableBodyProps,

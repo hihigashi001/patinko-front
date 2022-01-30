@@ -15,7 +15,7 @@ export const HeaderMain = () => {
       {openMenu ? (
       <div className="fixed ml-20 mt-8">
         <div className="flex flex-col">
-          <Link href="akasaka_real">
+          <Link href="/akasaka_real">
             <a className="border  py-4 px-12 text-sm text-white bg-blue-500">
               赤坂リアルタイム
             </a>

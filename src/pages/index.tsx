@@ -12,7 +12,7 @@ const Home = () => {
         </div>
       <div className="p-4">
         <div className="p-4 flex flex-col gap-4 max-w-md">
-          <Link href="akasaka_real">
+          <Link href="/akasaka_real">
             <a className="p-4 text-sm text-white bg-blue-500 rounded-lg">
               プラザ赤坂リアルタイム　(游タイム台のみ)
             </a>
