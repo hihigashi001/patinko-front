@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { DataLayout } from "src/layouts/data";
 import { Table } from "src/components/Table";
 import { HeaderSub } from "src/components/HeaderSub";
-import jsonData from "src/data/boom_yesterday.json";
+import jsonData from "src/data/boomtengin_yesterday.json";
 
 const BoomYesterday = () => {
   const columns = useMemo(

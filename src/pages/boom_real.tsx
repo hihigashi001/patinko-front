@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { DataLayout } from "src/layouts/data";
 import { Table } from "src/components/Table";
 import { HeaderSub } from "src/components/HeaderSub";
-import jsonData from "src/data/boom_real.json";
+import jsonData from "src/data/boomtengin_real.json";
 
 const BoomReal = () => {
   const columns = useMemo(
