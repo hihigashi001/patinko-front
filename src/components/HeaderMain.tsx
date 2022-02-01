@@ -16,13 +16,18 @@ export const HeaderMain = () => {
       <div className="fixed ml-20 mt-8">
         <div className="flex flex-col">
           <Link href="/akasaka_real">
-            <a className="border  py-4 px-12 text-sm text-white bg-blue-500">
+            <a className="border  py-4 px-12 text-sm text-white bg-red-400">
               赤坂リアルタイム
             </a>
           </Link>
           <Link href="/akasaka_yesterday">
-            <a className="border  py-4 px-12 text-sm text-white bg-blue-500">
+            <a className="border  py-4 px-12 text-sm text-white bg-red-400">
               赤坂昨日のデータ
+            </a>
+          </Link>
+          <Link href="/akasaka_total">
+            <a className="border  py-4 px-12 text-sm text-white bg-red-400">
+              赤坂1週間のデータ
             </a>
           </Link>
           <Link href="/boom_real">
@@ -33,6 +38,11 @@ export const HeaderMain = () => {
           <Link href="/boom_yesterday">
             <a className="border  py-4 px-12 text-sm text-white bg-blue-500">
               Boom昨日のデータ
+            </a>
+          </Link>
+          <Link href="/boom_total">
+            <a className="border  py-4 px-12 text-sm text-white bg-blue-500">
+              Boom1週間のデータ
             </a>
           </Link>
         </div>

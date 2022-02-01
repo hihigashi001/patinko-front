@@ -2,11 +2,17 @@ import { useMemo } from "react";
 import { DataLayout } from "src/layouts/data";
 import { Table } from "src/components/Table";
 import { HeaderSub } from "src/components/HeaderSub";
-import jsonData from "src/data/boomtengin_yesterday.json";
+import jsonData from "src/data/boomtengin_all.json";
+import { formatStringToFlag } from "src/utilitys/functions"
 
 const BoomYesterday = () => {
   const columns = useMemo(
     () => [
+      {
+        Header: "游タイム",
+        accessor: "yuu_time",
+        Cell: ({ value }:any) => formatStringToFlag(value),
+      },
       {
         Header: "現在の回転数",
         accessor: "now_roud_count",
@@ -14,10 +20,6 @@ const BoomYesterday = () => {
       {
         Header: "当り回数",
         accessor: "bonus",
-      },
-      {
-        Header: "游タイム",
-        accessor: "yuu_time",
       },
       {
         Header: "台番号",

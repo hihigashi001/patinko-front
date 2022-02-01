@@ -13,13 +13,18 @@ const Home = () => {
       <div className="p-4">
         <div className="p-4 flex flex-col gap-4 max-w-md">
           <Link href="/akasaka_real">
-            <a className="p-4 text-sm text-white bg-blue-500 rounded-lg">
+            <a className="p-4 text-sm text-white bg-red-400 rounded-lg">
               プラザ赤坂リアルタイム　(游タイム台のみ)
             </a>
           </Link>
           <Link href="/akasaka_yesterday">
-            <a className="p-4 text-sm text-white bg-blue-500 rounded-lg">
+            <a className="p-4 text-sm text-white bg-red-400 rounded-lg">
               プラザ赤坂昨日のデータ
+            </a>
+          </Link>
+          <Link href="/akasaka_total">
+            <a className="p-4 text-sm text-white bg-red-400 rounded-lg">
+              プラザ赤坂1週間のデータ
             </a>
           </Link>
           <Link href="/boom_real">
@@ -30,6 +35,11 @@ const Home = () => {
           <Link href="/boom_yesterday">
             <a className="p-4 text-sm text-white bg-blue-500 rounded-lg">
               Boom天神昨日のデータ
+            </a>
+          </Link>
+          <Link href="/boom_total">
+            <a className="p-4 text-sm text-white bg-blue-500 rounded-lg">
+              Boom天神1週間のデータ
             </a>
           </Link>
         </div>
