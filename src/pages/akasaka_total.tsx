@@ -2,8 +2,7 @@ import { useMemo } from "react";
 import { DataLayout } from "src/layouts/data";
 import { Table } from "src/components/Table";
 import { HeaderSub } from "src/components/HeaderSub";
-import jsonData from "src/data/akasaka_real_time.json";
-import { formatStringToFlag } from "src/utilitys/functions";
+import jsonData from "src/data/akasaka_total.json";
 
 const AkasakaReal = () => {
   const columns = useMemo(
@@ -17,10 +16,6 @@ const AkasakaReal = () => {
         accessor: "model_name",
       },
       {
-        Header: "総出玉",
-        accessor: "total_last_dedama",
-      },
-      {
         Header: "総当り回数",
         accessor: "total_bonus",
       },
@@ -28,12 +23,44 @@ const AkasakaReal = () => {
         Header: "総回転数",
         accessor: "total_round_count",
       },
+      {
+        Header: "総出玉",
+        accessor: "total_last_dedama",
+      },
+      {
+        Header: "1日前のデータ",
+        accessor: "ago1",
+      },
+      {
+        Header: "2日前のデータ",
+        accessor: "ago2",
+      },
+      {
+        Header: "3日前のデータ",
+        accessor: "ago3",
+      },
+      {
+        Header: "4日前のデータ",
+        accessor: "ago4",
+      },
+      {
+        Header: "5日前のデータ",
+        accessor: "ago5",
+      },
+      {
+        Header: "6日前のデータ",
+        accessor: "ago6",
+      },
+      {
+        Header: "7日前のデータ",
+        accessor: "ago7",
+      },
     ],
     []
   );
 
   const data = useMemo(() => jsonData, []);
-  const dataTime = jsonData[0].day_time;
+  const dataTime = jsonData[0].today;
 
   return (
     <DataLayout>
