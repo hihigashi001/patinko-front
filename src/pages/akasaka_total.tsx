@@ -28,31 +28,31 @@ const AkasakaReal = () => {
         accessor: "total_last_dedama",
       },
       {
-        Header: "1日前のデータ",
+        Header: "1日前",
         accessor: "ago1",
       },
       {
-        Header: "2日前のデータ",
+        Header: "2日前",
         accessor: "ago2",
       },
       {
-        Header: "3日前のデータ",
+        Header: "3日前",
         accessor: "ago3",
       },
       {
-        Header: "4日前のデータ",
+        Header: "4日前",
         accessor: "ago4",
       },
       {
-        Header: "5日前のデータ",
+        Header: "5日前",
         accessor: "ago5",
       },
       {
-        Header: "6日前のデータ",
+        Header: "6日前",
         accessor: "ago6",
       },
       {
-        Header: "7日前のデータ",
+        Header: "7日前",
         accessor: "ago7",
       },
     ],
