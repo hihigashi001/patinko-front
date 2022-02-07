@@ -11,9 +11,10 @@ export const HeaderMain = () => {
       <Link href={"/"}>
         <a className="p-2 bg-gray-500 text-white mr-4">Home</a>
       </Link>
-      <div className="p-2 bg-blue-500 text-white mr-4" onClick={menuFunction}>Menu</div>
+      <button className="p-2 bg-blue-500 text-white mr-4" onClick={menuFunction}>Menu</button>
+      <button className="p-2 bg-red-500 text-white mr-4 " onClick={() =>location.reload()}>データ再取得</button>
       {openMenu ? (
-      <div className="fixed ml-20 mt-8">
+      <div className="fixed ml-20 mt-8 z-50">
         <div className="flex flex-col">
           <Link href="/akasaka_real">
             <a className="border  py-4 px-12 text-sm text-white bg-red-400">
