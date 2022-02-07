@@ -18,7 +18,7 @@ const App = (props: AppProps) => {
   return (
     <>
       <Head>
-        <title>patinko</title>
+        <title>-patinko-</title>
       </Head>
       <QueryClientProvider client={queryClient}>
           <props.Component {...props.pageProps} />
