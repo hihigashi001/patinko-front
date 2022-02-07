@@ -2,11 +2,12 @@ import { useMemo } from "react";
 import { DataLayout } from "src/layouts/data";
 import { Table } from "src/components/Table";
 import { HeaderSub } from "src/components/HeaderSub";
-import jsonData from "src/data/akasaka_real_time.json";
 import { formatStringToFlag } from "src/utilitys/functions"
+import { useQuery } from "react-query";
+import { get_akasaka_real_time } from "src/states/APIs"
 
 const AkasakaReal = () => {
-
+  const { isLoading, error, data } = useQuery("get_akasaka_real_time", get_akasaka_real_time);
   const columns = useMemo(
     () => [
       {
@@ -45,9 +46,11 @@ const AkasakaReal = () => {
     ],
     []
   );
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error: {JSON.stringify(error)}</p>;
+  if (!data) return null;
 
-  const data = useMemo(() => jsonData, []);
-  const dataTime = jsonData[0].day_time;
+  const dataTime = data[0].day_time;
 
   return (
     <DataLayout>

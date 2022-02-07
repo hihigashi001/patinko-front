@@ -2,10 +2,12 @@ import { useMemo } from "react";
 import { DataLayout } from "src/layouts/data";
 import { Table } from "src/components/Table";
 import { HeaderSub } from "src/components/HeaderSub";
-import jsonData from "src/data/boomtengin_all.json";
 import { formatStringToFlag } from "src/utilitys/functions"
+import { useQuery } from "react-query";
+import { get_boomtengin_all } from "src/states/APIs"
 
 const BoomYesterday = () => {
+  const { isLoading, error, data } = useQuery("get_boomtengin_all", get_boomtengin_all);
   const columns = useMemo(
     () => [
       {
@@ -45,8 +47,12 @@ const BoomYesterday = () => {
     []
   );
 
-  const data = useMemo(() => jsonData, []);
-  const dataTime = jsonData[0].day_time;
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error: {JSON.stringify(error)}</p>;
+  if (!data) return null;
+  
+  
+  const dataTime = data[0].day_time;
 
   return (
     <DataLayout>

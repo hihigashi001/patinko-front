@@ -2,9 +2,11 @@ import { useMemo } from "react";
 import { DataLayout } from "src/layouts/data";
 import { Table } from "src/components/Table";
 import { HeaderSub } from "src/components/HeaderSub";
-import jsonData from "src/data/akasaka_total.json";
+import { useQuery } from "react-query";
+import { get_akasaka_total } from "src/states/APIs"
 
-const AkasakaReal = () => {
+const AkasakaTotal = () => {
+  const { isLoading, error, data } = useQuery("get_akasaka_total", get_akasaka_total);
   const columns = useMemo(
     () => [
       {
@@ -28,39 +30,71 @@ const AkasakaReal = () => {
         accessor: "total_last_dedama",
       },
       {
-        Header: "1日前",
-        accessor: "ago1",
+        Header: "1日前(玉)",
+        accessor: "ago1_dedama",
       },
       {
-        Header: "2日前",
-        accessor: "ago2",
+        Header: "1日前(転)",
+        accessor: "ago1_round",
       },
       {
-        Header: "3日前",
-        accessor: "ago3",
+        Header: "2日前(玉)",
+        accessor: "ago2_dedama",
       },
       {
-        Header: "4日前",
-        accessor: "ago4",
+        Header: "2日前(転)",
+        accessor: "ago2_round",
       },
       {
-        Header: "5日前",
-        accessor: "ago5",
+        Header: "3日前(玉)",
+        accessor: "ago3_dedama",
       },
       {
-        Header: "6日前",
-        accessor: "ago6",
+        Header: "3日前(転)",
+        accessor: "ago3_round",
       },
       {
-        Header: "7日前",
-        accessor: "ago7",
+        Header: "4日前(玉)",
+        accessor: "ago4_dedama",
+      },
+      {
+        Header: "4日前(転)",
+        accessor: "ago4_round",
+      },
+      {
+        Header: "5日前(玉)",
+        accessor: "ago5_dedama",
+      },
+      {
+        Header: "5日前(転)",
+        accessor: "ago5_round",
+      },
+      {
+        Header: "6日前(玉)",
+        accessor: "ago6_dedama",
+      },
+      {
+        Header: "6日前(転)",
+        accessor: "ago6_round",
+      },
+      {
+        Header: "7日前(玉)",
+        accessor: "ago7_dedama",
+      },
+      {
+        Header: "7日前(転)",
+        accessor: "ago7_round",
       },
     ],
     []
   );
 
-  const data = useMemo(() => jsonData, []);
-  const dataTime = jsonData[0].today;
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error: {JSON.stringify(error)}</p>;
+  if (!data) return null;
+  
+  
+  const dataTime = data[0].day_time;
 
   return (
     <DataLayout>
@@ -73,4 +107,4 @@ const AkasakaReal = () => {
   );
 };
 
-export default AkasakaReal;
+export default AkasakaTotal;
