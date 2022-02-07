@@ -12,7 +12,7 @@ export const SharedScrollToTop = () => {
   };
 
   const topButtonClass =
-    "fixed bottom-10 right-6 rounded-full h-16 w-16 z-50 bg-green-800 hover:bg-green-500 focus:outline-none text-white font-bold";
+    "fixed bottom-10 right-6 rounded-full h-16 w-16 z-50 bg-gray-700 hover:bg-gray-500 focus:outline-none text-white font-bold";
 
   return (
     <button className={topButtonClass} onClick={scrollToTop}>
