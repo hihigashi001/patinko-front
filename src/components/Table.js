@@ -19,7 +19,7 @@ export const Table = ({ columns, data }) => {
             {headerGroup.headers.map((column, i) => (
               <th
                 key={i}
-                className="h-8 px-4 py-2 text-sm font-medium leading-4 tracking-wider text-left text-white border-b border-gray-200 bg-gray-700 hover:bg-gray-500 "
+                className="h-16 px-4 py-2 text-sm font-medium leading-4 tracking-wider text-left text-white border-b border-gray-200 bg-gray-700 hover:bg-gray-500 whitespace-nowrap"
                 {...column.getHeaderProps(column.getSortByToggleProps())}
               >
                 {column.render("Header")}
