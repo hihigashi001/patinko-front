@@ -3,10 +3,13 @@ import { DataLayout } from "src/layouts/data";
 import { Table } from "src/components/Table";
 import { HeaderSub } from "src/components/HeaderSub";
 import { useQuery } from "react-query";
-import { get_boomtengin_total } from "src/states/APIs"
+import { get_boomtengin_total } from "src/states/APIs";
 
 const BoomTotal = () => {
-  const { isLoading, error, data } = useQuery("get_boomtengin_total", get_boomtengin_total);
+  const { isLoading, error, data } = useQuery(
+    "get_boomtengin_total",
+    get_boomtengin_total
+  );
   const columns = useMemo(
     () => [
       {
@@ -89,16 +92,17 @@ const BoomTotal = () => {
     []
   );
 
-
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {JSON.stringify(error)}</p>;
   if (!data) return null;
-  
+
   const dataTime = data[0].day_time;
 
   return (
     <DataLayout>
-      <div className="text-gray-500 text-lg font-bold">天神Boom 1週間の出玉情報</div>
+      <div className="text-gray-500 text-lg font-bold sticky top-14 h-12 bg-white">
+        天神Boom 1週間の出玉情報
+      </div>
       <HeaderSub time={dataTime} />
       <Table columns={columns} data={data} />
     </DataLayout>

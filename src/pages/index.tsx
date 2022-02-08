@@ -11,35 +11,39 @@ const Home = () => {
       <div className="p-2 font-bold text-xl">パチンコ出玉閲覧システム</div>
         </div>
       <div className="p-4">
-        <div className="p-4 flex flex-col gap-4 max-w-md">
-          <Link href="/akasaka_real">
-            <a className="p-4 text-sm text-white bg-red-400 rounded-lg">
-              プラザ赤坂リアルタイム　(游タイム台のみ)
-            </a>
-          </Link>
-          <Link href="/akasaka_yesterday">
-            <a className="p-4 text-sm text-white bg-red-400 rounded-lg">
-              プラザ赤坂昨日のデータ
-            </a>
-          </Link>
-          <Link href="/akasaka_total">
-            <a className="p-4 text-sm text-white bg-red-400 rounded-lg">
-              プラザ赤坂1週間のデータ
-            </a>
-          </Link>
+      <div className="mb-2 p-4 flex flex-col gap-4 max-w-md">
+        <div className="text-gray-700 font-bold">Boom天神</div>
           <Link href="/boom_real">
-            <a className="p-4 text-sm text-white bg-blue-500 rounded-lg">
-              Boom天神リアルタイム　(游タイム台のみ)
+            <a className="p-4 text-base text-white bg-gray-500 rounded-lg">
+              リアルタイム
             </a>
           </Link>
           <Link href="/boom_yesterday">
-            <a className="p-4 text-sm text-white bg-blue-500 rounded-lg">
-              Boom天神昨日のデータ
+            <a className="p-4 text-base text-white bg-gray-500 rounded-lg">
+              昨日のデータ
             </a>
           </Link>
           <Link href="/boom_total">
-            <a className="p-4 text-sm text-white bg-blue-500 rounded-lg">
-              Boom天神1週間のデータ
+            <a className="p-4 text-base text-white bg-gray-500 rounded-lg">
+              1週間のデータ
+            </a>
+          </Link>
+        </div>
+        <div className="p-4 flex flex-col gap-4 max-w-md border-1 border-red-600">
+        <div className="text-red-700 font-bold">plaza赤坂</div>
+          <Link href="/akasaka_real">
+            <a className="p-4 text-base text-white bg-red-600 rounded-lg">
+              リアルタイム
+            </a>
+          </Link>
+          <Link href="/akasaka_yesterday">
+            <a className="p-4 text-base text-white bg-red-600 rounded-lg">
+              昨日のデータ
+            </a>
+          </Link>
+          <Link href="/akasaka_total">
+            <a className="p-4 text-base text-white bg-red-600 rounded-lg">
+              1週間のデータ
             </a>
           </Link>
         </div>

@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-import { HeaderMain } from "src/components/HeaderMain"
-import { SharedScrollToTop } from "src/components/SharedScrollToTop"
+import { HeaderMain } from "src/components/HeaderMain";
+import { SharedScrollToTop } from "src/components/SharedScrollToTop";
 
 type Props = {
   children?: ReactNode;
