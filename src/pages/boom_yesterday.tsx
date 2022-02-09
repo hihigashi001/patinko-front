@@ -52,7 +52,7 @@ const BoomYesterday = () => {
 
   return (
     <DataLayout>
-      <div className="text-gray-500 text-lg font-bold sticky top-14 h-12 bg-white">
+      <div className="text-gray-500 text-lg font-bold bg-white">
         天神Boom昨日の出玉情報
       </div>
       <HeaderSub time={dataTime} />

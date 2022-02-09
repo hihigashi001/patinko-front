@@ -7,9 +7,9 @@ type Props = {
 
 export const DataLayout = ({ children }: Props) => {
   return (
-    <div className="w-full min-h-full container">
+    <div className="w-full min-h-full">
       <HeaderMain />
-      <div className="p-2">{children}</div>
+      <div className="">{children}</div>
     </div>
   );
 };
