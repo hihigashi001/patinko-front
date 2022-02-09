@@ -2,7 +2,6 @@ import { useMemo } from "react";
 import { DataLayout } from "src/layouts/data";
 import { Table } from "src/components/Table";
 import { HeaderSub } from "src/components/HeaderSub";
-import { formatStringToFlag } from "src/utilitys/functions";
 import { useQuery } from "react-query";
 import { get_akasaka_all } from "src/states/APIs";
 
@@ -13,11 +12,6 @@ const AkasakaYesterday = () => {
   );
   const columns = useMemo(
     () => [
-      {
-        Header: "游タイム",
-        accessor: "yuu_time",
-        Cell: ({ value }: any) => formatStringToFlag(value),
-      },
       {
         Header: "現在の回転数",
         accessor: "now_roud_count",
