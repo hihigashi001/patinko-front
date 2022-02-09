@@ -33,7 +33,7 @@ const BoomTotal = () => {
         accessor: "total_last_dedama",
       },
       {
-        Header: "1日前(玉)",
+        Header: "1日前\n(玉)",
         accessor: "ago1_dedama",
       },
       {

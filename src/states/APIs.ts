@@ -12,11 +12,6 @@ export const get_akasaka_total = async () => {
   return res.data;
 };
 
-export const get_akasaka_real_time = async () => {
-  const res = await axios.get(`${apiUrl}/akasaka_real_time`);
-  return res.data;
-};
-
 export const get_boomtengin_all = async () => {
   const res = await axios.get(`${apiUrl}/boomtengin_all`);
   return res.data;
@@ -24,10 +19,5 @@ export const get_boomtengin_all = async () => {
 
 export const get_boomtengin_total = async () => {
   const res = await axios.get(`${apiUrl}/boomtengin_total`);
-  return res.data;
-};
-
-export const get_boomtengin_real_time = async () => {
-  const res = await axios.get(`${apiUrl}/boomtengin_real_time`);
   return res.data;
 };
