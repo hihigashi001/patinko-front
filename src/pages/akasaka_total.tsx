@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { DataLayout } from "src/layouts/data";
+import { DataLayoutAkasaka } from "src/layouts/dataAkasaka";
 import { Table } from "src/components/Table";
 import { HeaderSub } from "src/components/HeaderSub";
 import { useQuery } from "react-query";
@@ -139,13 +139,13 @@ const AkasakaTotal = () => {
   const dataTime = data[0].day_time;
 
   return (
-    <DataLayout>
-      <div className="text-gray-500 text-lg font-bold bg-white">
+    <DataLayoutAkasaka>
+      <div className="text-red-600 text-lg font-bold bg-white">
         プラザ赤坂 1週間の出玉情報
       </div>
       <HeaderSub time={dataTime} />
       <Table columns={columns} data={data} />
-    </DataLayout>
+    </DataLayoutAkasaka>
   );
 };
 

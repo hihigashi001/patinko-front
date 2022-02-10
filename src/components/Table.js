@@ -38,7 +38,7 @@ export const Table = ({ columns, data }) => {
                   return (
                     <td
                       key={i}
-                      className="px-4 py-2 border-b border-gray-200"
+                      className="px-4 py-2 border-b border-gray-200 text-gray-700"
                       {...cell.getCellProps()}
                     >
                       {cell.render("Cell")}
