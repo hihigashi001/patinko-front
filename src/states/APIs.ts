@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiUrl = 'https://api.amidakuji.net/patinko';
+const apiUrl = 'https://api2.amidakuji.net/patinko';
 
 export const get_akasaka_all = async () => {
   const res = await axios.get(`${apiUrl}/akasaka_all`);
