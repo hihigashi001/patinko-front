@@ -136,7 +136,7 @@ const AkasakaTotal = () => {
   if (error) return <p>Error: {JSON.stringify(error)}</p>;
   if (!data) return null;
 
-  const dataTime = data[0].day_time;
+  const dataTime = data[1].day_time;
 
   return (
     <DataLayoutAkasaka>

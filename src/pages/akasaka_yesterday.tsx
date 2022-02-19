@@ -17,6 +17,10 @@ const AkasakaYesterday = () => {
         accessor: "now_roud_count",
       },
       {
+        Header: "初当たり回転数",
+        accessor: "first_bonus_round",
+      },
+      {
         Header: "当り回数",
         accessor: "bonus",
       },
@@ -48,7 +52,7 @@ const AkasakaYesterday = () => {
   if (error) return <p>Error: {JSON.stringify(error)}</p>;
   if (!data) return null;
 
-  const dataTime = data[0].day_time;
+  const dataTime = data[1].day_time;
 
   return (
     <DataLayoutAkasaka>

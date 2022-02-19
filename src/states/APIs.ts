@@ -21,3 +21,8 @@ export const get_boomtengin_total = async () => {
   const res = await axios.get(`${apiUrl}/boomtengin_total`);
   return res.data;
 };
+
+export const get_akasaka_detail = async (id:any) => {
+  const res = await axios.get(`${apiUrl}/akasaka_detail/${id}`);
+  return res.data;
+};
