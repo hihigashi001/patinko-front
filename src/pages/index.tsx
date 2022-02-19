@@ -23,6 +23,11 @@ const Home = () => {
               1週間のデータ
             </a>
           </Link>
+          <Link href="/site-seven">
+            <a className="p-4 text-base text-white bg-gray-500 rounded-lg">
+              サイトセブンから5店舗データ
+            </a>
+          </Link>
         </div>
       </div>
     </HomeLayout>
