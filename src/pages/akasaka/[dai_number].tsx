@@ -29,7 +29,7 @@ const AkasakaDetail = () => {
       },
       {
         Header: "当り回数",
-        accessor: "bonus",
+        accessor: "total_bouns_count",
       },
       {
         Header: "総回転数",
@@ -37,7 +37,7 @@ const AkasakaDetail = () => {
       },
       {
         Header: "現在の回転数",
-        accessor: "now_roud_count",
+        accessor: "now_round_count",
       },
       {
         Header: "出玉",

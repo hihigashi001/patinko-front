@@ -4,6 +4,7 @@ import { Table } from "src/components/Table";
 import { HeaderSub } from "src/components/HeaderSub";
 import { useQuery } from "react-query";
 import { get_site_seven_all } from "src/states/APIs";
+import { yesterdayToString } from "src/utilitys/functions";
 
 const BoomYesterday = () => {
   const { isLoading, error, data } = useQuery(
@@ -14,7 +15,7 @@ const BoomYesterday = () => {
     () => [
       {
         Header: "現在の回転数",
-        accessor: "now_roud_count",
+        accessor: "now_round_count",
       },
       {
         Header: "店名",
@@ -34,7 +35,7 @@ const BoomYesterday = () => {
       },
       {
         Header: "当り回数",
-        accessor: "bonus",
+        accessor: "total_bouns_count",
       },
     ],
     []
@@ -44,14 +45,13 @@ const BoomYesterday = () => {
   if (error) return <p>Error: {JSON.stringify(error)}</p>;
   if (!data) return null;
 
-  const dataTime = data[1].day_time;
 
   return (
     <DataLayout>
       <div className="text-gray-500 text-lg font-bold bg-white">
         サイトセブンの全店舗データ
       </div>
-      <div className="text-gray-500 text-sm">{dataTime}: 時点のデータ</div>
+      <div className="text-gray-500 text-sm"> {yesterdayToString()} のデータ</div>
       <Table columns={columns} data={data} />
     </DataLayout>
   );
