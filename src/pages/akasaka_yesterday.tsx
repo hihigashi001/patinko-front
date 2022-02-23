@@ -1,14 +1,16 @@
 import { useMemo } from "react";
-import { DataLayoutAkasaka } from "src/layouts/dataAkasaka";
+import { DataLayout } from "src/layouts/data";
 import { Table } from "src/components/Table";
 import { HeaderSub } from "src/components/HeaderSub";
 import { useQuery } from "react-query";
 import { get_akasaka_all } from "src/states/APIs";
+import { yesterdayToString } from "src/utilitys/functions";
 
 const AkasakaYesterday = () => {
+  const date_time  = yesterdayToString()
   const { isLoading, error, data } = useQuery(
     "get_akasaka_all",
-    get_akasaka_all
+    get_akasaka_all(date_time)
   );
   const columns = useMemo(
     () => [
@@ -52,16 +54,14 @@ const AkasakaYesterday = () => {
   if (error) return <p>Error: {JSON.stringify(error)}</p>;
   if (!data) return null;
 
-  const dataTime = data[1].day_time;
-
   return (
-    <DataLayoutAkasaka>
-      <div className="text-red-600 text-lg font-bold bg-white">
-        プラザ赤坂 昨日の出玉情報
+    <DataLayout>
+      <div className="text-gray-500 text-lg font-bold bg-white">
+        プラザ赤坂の出玉情報
       </div>
-      <HeaderSub time={dataTime} />
+      <HeaderSub time={yesterdayToString()} />
       <Table columns={columns} data={data} />
-    </DataLayoutAkasaka>
+    </DataLayout>
   );
 };
 

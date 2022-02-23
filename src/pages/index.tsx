@@ -15,17 +15,17 @@ const Home = () => {
         <div className="text-gray-700 font-bold">Boom天神</div>
           <Link href="/boom_yesterday">
             <a className="p-4 text-base text-white bg-gray-500 rounded-lg">
-              昨日のデータ
+              ブーム天神のデータ
             </a>
           </Link>
-          <Link href="/boom_total">
+          <Link href="/akasaka_yesterday">
             <a className="p-4 text-base text-white bg-gray-500 rounded-lg">
-              1週間のデータ
+              プラザ赤坂のデータ
             </a>
           </Link>
           <Link href="/site-seven">
             <a className="p-4 text-base text-white bg-gray-500 rounded-lg">
-              サイトセブンから5店舗データ
+              サイトセブンの2店舗データ
             </a>
           </Link>
         </div>

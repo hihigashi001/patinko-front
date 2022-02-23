@@ -1,5 +1,5 @@
 import { useMemo, useEffect, useState } from "react";
-import { DataLayoutAkasaka } from "src/layouts/dataAkasaka";
+import { DataLayout } from "src/layouts/data";
 import { Table } from "src/components/Table";
 import { useQuery } from "react-query";
 import { get_akasaka_detail } from "src/states/APIs";
@@ -56,12 +56,12 @@ const AkasakaDetail = () => {
   );
 
   return (
-    <DataLayoutAkasaka>
+    <DataLayout>
       <div className="text-red-600 text-lg font-bold bg-white">
-        プラザ赤坂 {dai_number} 番台の1週間出玉情報
+        ブーム天神 {dai_number} 番台の1週間出玉情報
       </div>
       <Table columns={columns} data={data} />
-    </DataLayoutAkasaka>
+    </DataLayout>
   );
 };
 

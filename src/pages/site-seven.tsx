@@ -51,7 +51,7 @@ const BoomYesterday = () => {
       <div className="text-gray-500 text-lg font-bold bg-white">
         サイトセブンの全店舗データ
       </div>
-      <div className="text-gray-500 text-sm"> {yesterdayToString()} のデータ</div>
+      <HeaderSub time={yesterdayToString()} />
       <Table columns={columns} data={data} />
     </DataLayout>
   );

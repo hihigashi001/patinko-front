@@ -4,6 +4,7 @@ import { Table } from "src/components/Table";
 import { HeaderSub } from "src/components/HeaderSub";
 import { useQuery } from "react-query";
 import { get_boomtengin_all } from "src/states/APIs";
+import { yesterdayToString } from "src/utilitys/functions";
 
 const BoomYesterday = () => {
   const { isLoading, error, data } = useQuery(
@@ -52,14 +53,13 @@ const BoomYesterday = () => {
   if (error) return <p>Error: {JSON.stringify(error)}</p>;
   if (!data) return null;
 
-  const dataTime = data[1].day_time;
 
   return (
     <DataLayout>
       <div className="text-gray-500 text-lg font-bold bg-white">
-        天神Boom昨日の出玉情報
+        ブーム天神の出玉情報
       </div>
-      <HeaderSub time={dataTime} />
+      <HeaderSub time={yesterdayToString()} />
       <Table columns={columns} data={data} />
     </DataLayout>
   );
