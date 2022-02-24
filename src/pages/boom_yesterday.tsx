@@ -7,9 +7,10 @@ import { get_boomtengin_all } from "src/states/APIs";
 import { yesterdayToString } from "src/utilitys/functions";
 
 const BoomYesterday = () => {
+  const date_time  = yesterdayToString()
   const { isLoading, error, data } = useQuery(
-    "get_boomtengin_all",
-    get_boomtengin_all
+    ["get_boomtengin_all", { date_time }],
+    () => get_boomtengin_all(date_time)
   );
   const columns = useMemo(
     () => [
