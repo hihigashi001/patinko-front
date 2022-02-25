@@ -9,10 +9,9 @@ import { yesterdayToString } from "src/utilitys/functions";
 const AkasakaYesterday = () => {
   const date_time  = yesterdayToString()
   const { isLoading, error, data } = useQuery(
-    ["get_akasaka_all", { date_time }],
+    "get_akasaka_all",
     () => get_akasaka_all(date_time)
   );
-
   const columns = useMemo(
     () => [
       {
