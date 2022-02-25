@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { DataLayout } from "src/layouts/data";
-import { Table } from "src/components/Table";
+import { SharedTable } from "src/components/Table";
 import { HeaderSub } from "src/components/HeaderSub";
 import { useQuery } from "react-query";
 import { get_akasaka_all } from "src/states/APIs";
@@ -60,7 +60,7 @@ const AkasakaYesterday = () => {
         プラザ赤坂の出玉情報
       </div>
       <HeaderSub time={yesterdayToString()} />
-      <Table columns={columns} data={data} />
+      <SharedTable columns={columns} data={data} />
     </DataLayout>
   );
 };

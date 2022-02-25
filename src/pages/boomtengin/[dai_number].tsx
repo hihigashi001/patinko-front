@@ -10,13 +10,6 @@ const AkasakaDetail = () => {
   const router = useRouter()
   const {dai_number} = router.query
 
-  // useEffect(() => {
-  //   if(router.isReady) {
-  //     const data = get_akasaka_detail(dai_number)
-  //     setData(data)
-  //   }
-  //   },[dai_number, router]);
-
   const columns = useMemo(
     () => [
       {

@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { DataLayout } from "src/layouts/data";
-import { Table } from "src/components/Table";
+import { SharedTable } from "src/components/Table";
 import { HeaderSub } from "src/components/HeaderSub";
 import { useQuery } from "react-query";
 import { get_boomtengin_all } from "src/states/APIs";
@@ -61,7 +61,7 @@ const BoomYesterday = () => {
         ブーム天神の出玉情報
       </div>
       <HeaderSub time={yesterdayToString()} />
-      <Table columns={columns} data={data} />
+      <SharedTable columns={columns} data={data} />
     </DataLayout>
   );
 };
