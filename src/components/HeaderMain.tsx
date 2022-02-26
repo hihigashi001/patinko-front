@@ -1,12 +1,21 @@
 import React from "react";
 import Link from "next/link";
+import { SharedIcon } from "src/components/SharedIcon";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faRotateLeft } from "@fortawesome/free-solid-svg-icons";
+import Router from "next/router";
 
 export const HeaderMain = () => {
   return (
-    <header className="h-12 bg-gray-100">
+    <header className="flex justify-between">
       <Link href={"/"}>
-        <a className="px-6 py-4 bg-gray-500 text-white mr-4">Menu</a>
+        <a className="p-2 hover:bg-gray-300">
+          <SharedIcon icon={faBars} />
+        </a>
       </Link>
+      <div className="p-2 hover:bg-gray-300" onClick={() => Router.back()}>
+        <SharedIcon icon={faRotateLeft} />
+      </div>
     </header>
   );
 };
