@@ -20,6 +20,10 @@ export const yesterdayToString = () => {
   return format(new Date(yesterday), "yyyy-MM-dd");
 };
 
+export const dateToString = (date:any) => {
+  return format(date, "yyyy-MM-dd");
+};
+
 export const cellFunction_boomtengin = ({value}: any) => {
   const href = "/boomtengin/" + value;
   return (

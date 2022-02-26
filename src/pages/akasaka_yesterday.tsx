@@ -1,20 +1,24 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { DataLayout } from "src/layouts/data";
 import { SharedTable } from "src/components/Table";
-import { HeaderSub } from "src/components/HeaderSub";
+import { SharedDataPicker } from "src/components/SharedDataPicker";
 import { useQuery } from "react-query";
 import { get_akasaka_all } from "src/states/APIs";
 import {
+  dateToString,
   yesterdayToString,
   cellFunction_akasaka,
 } from "src/utilitys/functions";
 
 const AkasakaYesterday = () => {
-  const date_time = yesterdayToString();
+  const yesterday = yesterdayToString();
+  const [dateTime, setDateTime] = useState(yesterday);
+
   const { isLoading, error, data } = useQuery(
-    ["get_akasaka_all", date_time],
-    () => get_akasaka_all(date_time)
+    ["get_akasaka_all", dateTime],
+    () => get_akasaka_all(dateTime)
   );
+
   const columns = useMemo(
     () => [
       {
@@ -60,10 +64,17 @@ const AkasakaYesterday = () => {
 
   return (
     <DataLayout>
-      <div className="px-4 text-gray-500 text-lg font-bold bg-gray-100">
-        プラザ赤坂の出玉情報
+      <div className="flex p-2">
+        <div className="px-4 py-2  text-gray-500 text-lg font-bold text-center">
+          プラザ赤坂
+        </div>
+        <SharedDataPicker
+          value={dateTime!}
+          onChange={(date: Date) => {
+            setDateTime(dateToString(date));
+          }}
+        />
       </div>
-      <HeaderSub time={yesterdayToString()} />
       <SharedTable columns={columns} data={data} />
     </DataLayout>
   );
