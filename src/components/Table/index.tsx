@@ -15,7 +15,7 @@ type TableComponent = <T extends object>(
 ) => ReactElement<Props<T>>;
 
 export const SharedTable: TableComponent = ({ columns, data }) => {
-  const instance = useTable({ columns, data }, useSortBy);
+  const instance = useTable({ columns, data, initialState: { sortBy: [{ id: 'date_time', desc: true},{ id: 'now_round_count', desc: true}]} }, useSortBy);
   const { getTableProps } = instance;
 
   return (

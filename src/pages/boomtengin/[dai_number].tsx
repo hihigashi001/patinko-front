@@ -24,29 +24,13 @@ const Boomtengin = () => {
         accessor: "model_name",
       },
       {
-        Header: "閉店時",
-        accessor: "now_round_count",
-      },
-      {
         Header: "初当り",
         accessor: "first_bonus_round",
         Footer: "合計: ",
       },
       {
-        Header: "当り回数",
-        accessor: "total_bouns_count",
-        Footer: (d: any) => {
-          const total = useMemo(
-            () =>
-              d.rows.reduce(
-                (sum: any, row: any) =>
-                  Number(row.values.total_bouns_count) + sum,
-                0
-              ),
-            [d.rows]
-          );
-          return <>{total}</>;
-        },
+        Header: "閉店時",
+        accessor: "now_round_count",
       },
       {
         Header: "総回転数",
@@ -57,6 +41,22 @@ const Boomtengin = () => {
               d.rows.reduce(
                 (sum: any, row: any) =>
                   Number(row.values.total_round_count) + sum,
+                0
+              ),
+            [d.rows]
+          );
+          return <>{total}</>;
+        },
+      },
+      {
+        Header: "当り回数",
+        accessor: "total_bouns_count",
+        Footer: (d: any) => {
+          const total = useMemo(
+            () =>
+              d.rows.reduce(
+                (sum: any, row: any) =>
+                  Number(row.values.total_bouns_count) + sum,
                 0
               ),
             [d.rows]
