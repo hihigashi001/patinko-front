@@ -9,7 +9,7 @@ import { yesterdayToString, cellFunction_akasaka } from "src/utilitys/functions"
 const AkasakaYesterday = () => {
   const date_time  = yesterdayToString()
   const { isLoading, error, data } = useQuery(
-    "get_akasaka_all",
+    ["get_akasaka_all", date_time],
     () => get_akasaka_all(date_time)
   );
   const columns = useMemo(
@@ -20,20 +20,20 @@ const AkasakaYesterday = () => {
         Cell: cellFunction_akasaka,
       },
       {
-        Header: "現在の回転数",
+        Header: "機種名",
+        accessor: "model_name",
+      },
+      {
+        Header: "閉店時",
         accessor: "now_round_count",
       },
       {
-        Header: "初当たり回転数",
+        Header: "初当り",
         accessor: "first_bonus_round",
       },
       {
         Header: "当り回数",
         accessor: "total_bouns_count",
-      },
-      {
-        Header: "機種名",
-        accessor: "model_name",
       },
       {
         Header: "総回転数",

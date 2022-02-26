@@ -3,14 +3,14 @@ import { useMemo, useEffect, useState } from "react";
 import { DataLayout } from "src/layouts/data";
 import { SharedTable } from "src/components/Table";
 import { useQuery } from "react-query";
-import { get_boomtengin_dai_history } from "src/states/APIs";
+import { get_akasaka_dai_history } from "src/states/APIs";
 
-const Boomtengin = () => {
+const Akasaka = () => {
   const router = useRouter();
-  const dai_number = router.asPath.slice(12);
+  const dai_number = router.asPath.slice(9);
   const { isLoading, error, data } = useQuery(
-    ["get_boomtengin_dai_history", dai_number],
-    () => get_boomtengin_dai_history(dai_number)
+    ["get_akasaka_dai_history", dai_number],
+    () => get_akasaka_dai_history(dai_number)
   );
 
   const columns = useMemo(
@@ -66,4 +66,4 @@ const Boomtengin = () => {
   );
 };
 
-export default Boomtengin;
+export default Akasaka;

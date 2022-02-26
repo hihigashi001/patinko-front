@@ -4,12 +4,16 @@ import { SharedTable } from "src/components/Table";
 import { HeaderSub } from "src/components/HeaderSub";
 import { useQuery } from "react-query";
 import { get_boomtengin_all } from "src/states/APIs";
-import { yesterdayToString, cellFunction_boomtengin } from "src/utilitys/functions";
+import {
+  yesterdayToString,
+  cellFunction_boomtengin,
+} from "src/utilitys/functions";
 
 const BoomYesterday = () => {
   const date_time = yesterdayToString();
-  const { isLoading, error, data } = useQuery("get_boomtengin_all", () =>
-    get_boomtengin_all(date_time)
+  const { isLoading, error, data } = useQuery(
+    ["get_boomtengin_all", date_time],
+    () => get_boomtengin_all(date_time)
   );
 
   const columns = useMemo(
@@ -20,20 +24,20 @@ const BoomYesterday = () => {
         Cell: cellFunction_boomtengin,
       },
       {
-        Header: "現在の回転数",
+        Header: "機種名",
+        accessor: "model_name",
+      },
+      {
+        Header: "閉店時",
         accessor: "now_round_count",
       },
       {
-        Header: "初当たり回転数",
+        Header: "初当り",
         accessor: "first_bonus_round",
       },
       {
         Header: "当り回数",
         accessor: "total_bouns_count",
-      },
-      {
-        Header: "機種名",
-        accessor: "model_name",
       },
       {
         Header: "総回転数",
