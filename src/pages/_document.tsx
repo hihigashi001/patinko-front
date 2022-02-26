@@ -16,7 +16,9 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="ja" dir="ltr">
-        <Head></Head>
+        <Head>
+          <meta name="robots" content="noindex,nofollow,noarchive" />
+        </Head>
         <body className="bg-gray-100">
           <Main />
           <NextScript />
