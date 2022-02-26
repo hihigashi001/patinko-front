@@ -1,14 +1,9 @@
 import { useMemo, useEffect, useState } from "react";
 import { DataLayout } from "src/layouts/data";
-import { Table } from "src/components/Table";
-import { useQuery } from "react-query";
-import { get_akasaka_detail } from "src/states/APIs";
-import { useRouter } from 'next/router'
+import { SharedTable } from "src/components/Table";
 
-const AkasakaDetail = () => {
+const Boomtengin = () => {
   const [data, setData] = useState([])
-  const router = useRouter()
-  const {dai_number} = router.query
 
   const columns = useMemo(
     () => [
@@ -50,12 +45,8 @@ const AkasakaDetail = () => {
 
   return (
     <DataLayout>
-      <div className="text-red-600 text-lg font-bold bg-white">
-        ブーム天神 {dai_number} 番台の1週間出玉情報
-      </div>
-      <Table columns={columns} data={data} />
     </DataLayout>
   );
 };
 
-export default AkasakaDetail;
+export default Boomtengin;
