@@ -13,6 +13,7 @@ const Boomtengin = () => {
     ["get_boomtengin_dai_history", dai_number],
     () => get_boomtengin_dai_history(dai_number)
   );
+  const href = "http://boom-rocky.pt.teramoba2.com/boomtengin/standgraph/?rack_no=" + dai_number
 
   const columns = useMemo(
     () => [
@@ -98,8 +99,9 @@ const Boomtengin = () => {
 
   return (
     <DataLayout>
-      <div className="px-4 text-gray-500 text-lg font-bold bg-gray-100">
-        {dai_number}番台の過去データ
+      <div className="flex mb-2 px-4 text-gray-500 text-lg font-bold bg-gray-100">
+        <span className="p-2">{dai_number}番台の過去データ</span>
+        <a className="p-4 rounded-lg ml-4 text-sm bg-gray-700 hover:bg-gray-500 text-white" href={href}>公式HPに移動</a>
       </div>
       <SharedTable columns={columns} data={data} />
     </DataLayout>
