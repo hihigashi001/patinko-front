@@ -4,16 +4,21 @@ import { SharedTable } from "src/components/Table";
 import { HeaderSub } from "src/components/HeaderSub";
 import { useQuery } from "react-query";
 import { get_boomtengin_all } from "src/states/APIs";
-import { yesterdayToString } from "src/utilitys/functions";
+import { yesterdayToString, cellFunction_boomtengin } from "src/utilitys/functions";
 
 const BoomYesterday = () => {
-  const date_time  = yesterdayToString()
-  const { isLoading, error, data } = useQuery(
-    "get_boomtengin_all",
-    () => get_boomtengin_all(date_time)
+  const date_time = yesterdayToString();
+  const { isLoading, error, data } = useQuery("get_boomtengin_all", () =>
+    get_boomtengin_all(date_time)
   );
+
   const columns = useMemo(
     () => [
+      {
+        Header: "台番号",
+        accessor: "dai_number",
+        Cell: cellFunction_boomtengin,
+      },
       {
         Header: "現在の回転数",
         accessor: "now_round_count",
@@ -25,10 +30,6 @@ const BoomYesterday = () => {
       {
         Header: "当り回数",
         accessor: "total_bouns_count",
-      },
-      {
-        Header: "台番号",
-        accessor: "dai_number",
       },
       {
         Header: "機種名",
@@ -54,10 +55,9 @@ const BoomYesterday = () => {
   if (error) return <p>Error: {JSON.stringify(error)}</p>;
   if (!data) return null;
 
-
   return (
     <DataLayout>
-      <div className="text-gray-500 text-lg font-bold bg-white">
+      <div className="px-4 text-gray-500 text-lg font-bold bg-white">
         ブーム天神の出玉情報
       </div>
       <HeaderSub time={yesterdayToString()} />

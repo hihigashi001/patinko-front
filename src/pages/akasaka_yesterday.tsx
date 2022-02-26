@@ -4,7 +4,7 @@ import { SharedTable } from "src/components/Table";
 import { HeaderSub } from "src/components/HeaderSub";
 import { useQuery } from "react-query";
 import { get_akasaka_all } from "src/states/APIs";
-import { yesterdayToString } from "src/utilitys/functions";
+import { yesterdayToString, cellFunction_akasaka } from "src/utilitys/functions";
 
 const AkasakaYesterday = () => {
   const date_time  = yesterdayToString()
@@ -14,6 +14,11 @@ const AkasakaYesterday = () => {
   );
   const columns = useMemo(
     () => [
+      {
+        Header: "台番号",
+        accessor: "dai_number",
+        Cell: cellFunction_akasaka,
+      },
       {
         Header: "現在の回転数",
         accessor: "now_round_count",
@@ -25,10 +30,6 @@ const AkasakaYesterday = () => {
       {
         Header: "当り回数",
         accessor: "total_bouns_count",
-      },
-      {
-        Header: "台番号",
-        accessor: "dai_number",
       },
       {
         Header: "機種名",
@@ -56,7 +57,7 @@ const AkasakaYesterday = () => {
 
   return (
     <DataLayout>
-      <div className="text-gray-500 text-lg font-bold bg-white">
+      <div className="px-4 text-gray-500 text-lg font-bold bg-white">
         プラザ赤坂の出玉情報
       </div>
       <HeaderSub time={yesterdayToString()} />

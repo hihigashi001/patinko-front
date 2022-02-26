@@ -4,7 +4,7 @@ import { SharedTable } from "src/components/Table";
 import { HeaderSub } from "src/components/HeaderSub";
 import { useQuery } from "react-query";
 import { get_site_seven_all } from "src/states/APIs";
-import { yesterdayToString } from "src/utilitys/functions";
+import { yesterdayToString, cellFunction_site_seven } from "src/utilitys/functions";
 
 const BoomYesterday = () => {
   const { isLoading, error, data } = useQuery(
@@ -13,6 +13,11 @@ const BoomYesterday = () => {
   );
   const columns = useMemo(
     () => [
+      {
+        Header: "台番号",
+        accessor: "dai_number",
+        Cell: cellFunction_site_seven,
+      },
       {
         Header: "現在の回転数",
         accessor: "now_round_count",
@@ -24,10 +29,6 @@ const BoomYesterday = () => {
       {
         Header: "機種名",
         accessor: "model_name",
-      },
-      {
-        Header: "台番号",
-        accessor: "dai_number",
       },
       {
         Header: "総回転数",
@@ -48,7 +49,7 @@ const BoomYesterday = () => {
 
   return (
     <DataLayout>
-      <div className="text-gray-500 text-lg font-bold bg-white">
+      <div className="px-4 text-gray-500 text-lg font-bold bg-white">
         サイトセブンの全店舗データ
       </div>
       <HeaderSub time={yesterdayToString()} />
