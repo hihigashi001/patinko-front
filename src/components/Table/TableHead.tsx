@@ -9,7 +9,7 @@ export const TableHead = <T extends object>({
 }: TableHeadProps<T>) => {
   const { headerGroups } = instance;
   return (
-    <thead className="sticky top-0 z-50 bg-gray-200">
+    <thead className="sticky top-0 z-50 bg-gray-100">
       {headerGroups.map((headerGroup) => (
         <tr {...headerGroup.getHeaderGroupProps()}>
           {headerGroup.headers.map((column) => (

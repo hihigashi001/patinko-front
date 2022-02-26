@@ -71,8 +71,7 @@ const Boomtengin = () => {
           const total = useMemo(
             () =>
               d.rows.reduce(
-                (sum: any, row: any) =>
-                  Number(row.values.last_dedama) + sum,
+                (sum: any, row: any) => Number(row.values.last_dedama) + sum,
                 0
               ),
             [d.rows]
@@ -94,7 +93,7 @@ const Boomtengin = () => {
 
   return (
     <DataLayout>
-      <div className="px-4 text-gray-500 text-lg font-bold bg-white">
+      <div className="px-4 text-gray-500 text-lg font-bold bg-gray-100">
         {dai_number}番台の過去データ
       </div>
       <SharedTable columns={columns} data={data} />

@@ -4,10 +4,13 @@ import { SharedTable } from "src/components/Table";
 import { HeaderSub } from "src/components/HeaderSub";
 import { useQuery } from "react-query";
 import { get_akasaka_all } from "src/states/APIs";
-import { yesterdayToString, cellFunction_akasaka } from "src/utilitys/functions";
+import {
+  yesterdayToString,
+  cellFunction_akasaka,
+} from "src/utilitys/functions";
 
 const AkasakaYesterday = () => {
-  const date_time  = yesterdayToString()
+  const date_time = yesterdayToString();
   const { isLoading, error, data } = useQuery(
     ["get_akasaka_all", date_time],
     () => get_akasaka_all(date_time)
@@ -57,7 +60,7 @@ const AkasakaYesterday = () => {
 
   return (
     <DataLayout>
-      <div className="px-4 text-gray-500 text-lg font-bold bg-white">
+      <div className="px-4 text-gray-500 text-lg font-bold bg-gray-100">
         プラザ赤坂の出玉情報
       </div>
       <HeaderSub time={yesterdayToString()} />

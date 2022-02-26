@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 import { useMemo, useEffect, useState } from "react";
 import { DataLayout } from "src/layouts/data";
 import { SharedTable } from "src/components/Table";
@@ -71,8 +71,7 @@ const Akasaka = () => {
           const total = useMemo(
             () =>
               d.rows.reduce(
-                (sum: any, row: any) =>
-                  Number(row.values.last_dedama) + sum,
+                (sum: any, row: any) => Number(row.values.last_dedama) + sum,
                 0
               ),
             [d.rows]
@@ -88,16 +87,15 @@ const Akasaka = () => {
     []
   );
 
-
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {JSON.stringify(error)}</p>;
   if (!data) return null;
 
-
   return (
     <DataLayout>
-      <div className="px-4 text-gray-500 text-lg font-bold bg-white">
-      {dai_number}番台の過去データ</div>
+      <div className="px-4 text-gray-500 text-lg font-bold bg-gray-100">
+        {dai_number}番台の過去データ
+      </div>
       <SharedTable columns={columns} data={data} />
     </DataLayout>
   );

@@ -61,7 +61,7 @@ const BoomYesterday = () => {
 
   return (
     <DataLayout>
-      <div className="px-4 text-gray-500 text-lg font-bold bg-white">
+      <div className="px-4 text-gray-500 text-lg font-bold bg-gray-100">
         ブーム天神の出玉情報
       </div>
       <HeaderSub time={yesterdayToString()} />

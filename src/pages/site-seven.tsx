@@ -4,7 +4,10 @@ import { SharedTable } from "src/components/Table";
 import { HeaderSub } from "src/components/HeaderSub";
 import { useQuery } from "react-query";
 import { get_site_seven_all } from "src/states/APIs";
-import { yesterdayToString, cellFunction_site_seven } from "src/utilitys/functions";
+import {
+  yesterdayToString,
+  cellFunction_site_seven,
+} from "src/utilitys/functions";
 
 const BoomYesterday = () => {
   const { isLoading, error, data } = useQuery(
@@ -46,10 +49,9 @@ const BoomYesterday = () => {
   if (error) return <p>Error: {JSON.stringify(error)}</p>;
   if (!data) return null;
 
-
   return (
     <DataLayout>
-      <div className="px-4 text-gray-500 text-lg font-bold bg-white">
+      <div className="px-4 text-gray-500 text-lg font-bold bg-gray-100">
         サイトセブンの全店舗データ
       </div>
       <HeaderSub time={yesterdayToString()} />
