@@ -30,18 +30,55 @@ const Akasaka = () => {
       {
         Header: "初当り",
         accessor: "first_bonus_round",
+        Footer: "合計: ",
       },
       {
         Header: "当り回数",
         accessor: "total_bouns_count",
+        Footer: (d: any) => {
+          const total = useMemo(
+            () =>
+              d.rows.reduce(
+                (sum: any, row: any) =>
+                  Number(row.values.total_bouns_count) + sum,
+                0
+              ),
+            [d.rows]
+          );
+          return <>{total}</>;
+        },
       },
       {
         Header: "総回転数",
         accessor: "total_round_count",
+        Footer: (d: any) => {
+          const total = useMemo(
+            () =>
+              d.rows.reduce(
+                (sum: any, row: any) =>
+                  Number(row.values.total_round_count) + sum,
+                0
+              ),
+            [d.rows]
+          );
+          return <>{total}</>;
+        },
       },
       {
         Header: "出玉",
         accessor: "last_dedama",
+        Footer: (d: any) => {
+          const total = useMemo(
+            () =>
+              d.rows.reduce(
+                (sum: any, row: any) =>
+                  Number(row.values.last_dedama) + sum,
+                0
+              ),
+            [d.rows]
+          );
+          return <>{total}</>;
+        },
       },
       {
         Header: "回転率",

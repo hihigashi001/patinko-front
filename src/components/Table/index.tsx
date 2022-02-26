@@ -3,6 +3,7 @@ import { useTable, Column, useSortBy } from "react-table";
 
 import { TableHead } from "src/components/Table/TableHead";
 import { TableBody } from "src/components/Table/TableBody";
+import { TableFooter } from "src/components/Table/TableFooter";
 
 type Props<T extends object> = {
   columns: Column<T>[];
@@ -21,6 +22,7 @@ export const SharedTable: TableComponent = ({ columns, data }) => {
     <table {...getTableProps()}>
       <TableHead instance={instance} />
       <TableBody instance={instance} />
+      <TableFooter instance={instance} />
     </table>
   );
 };

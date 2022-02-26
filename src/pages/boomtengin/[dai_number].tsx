@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 import { useMemo, useEffect, useState } from "react";
 import { DataLayout } from "src/layouts/data";
 import { SharedTable } from "src/components/Table";
@@ -30,18 +30,55 @@ const Boomtengin = () => {
       {
         Header: "初当り",
         accessor: "first_bonus_round",
+        Footer: "合計: ",
       },
       {
         Header: "当り回数",
         accessor: "total_bouns_count",
+        Footer: (d: any) => {
+          const total = useMemo(
+            () =>
+              d.rows.reduce(
+                (sum: any, row: any) =>
+                  Number(row.values.total_bouns_count) + sum,
+                0
+              ),
+            [d.rows]
+          );
+          return <>{total}</>;
+        },
       },
       {
         Header: "総回転数",
         accessor: "total_round_count",
+        Footer: (d: any) => {
+          const total = useMemo(
+            () =>
+              d.rows.reduce(
+                (sum: any, row: any) =>
+                  Number(row.values.total_round_count) + sum,
+                0
+              ),
+            [d.rows]
+          );
+          return <>{total}</>;
+        },
       },
       {
         Header: "出玉",
         accessor: "last_dedama",
+        Footer: (d: any) => {
+          const total = useMemo(
+            () =>
+              d.rows.reduce(
+                (sum: any, row: any) =>
+                  Number(row.values.last_dedama) + sum,
+                0
+              ),
+            [d.rows]
+          );
+          return <>{total}</>;
+        },
       },
       {
         Header: "回転率",
@@ -51,16 +88,15 @@ const Boomtengin = () => {
     []
   );
 
-
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {JSON.stringify(error)}</p>;
   if (!data) return null;
 
-
   return (
     <DataLayout>
       <div className="px-4 text-gray-500 text-lg font-bold bg-white">
-      {dai_number}番台の過去データ</div>
+        {dai_number}番台の過去データ
+      </div>
       <SharedTable columns={columns} data={data} />
     </DataLayout>
   );
