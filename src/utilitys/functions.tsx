@@ -9,6 +9,13 @@ export const formatStringToFlag = (value: any) => {
   }
 };
 
+export const youbiToString = (value:string) => {
+  const stringToDate = new Date(value)
+  const day_arr = ['日', '月', '火', '水', '木', '金', '土']
+  const youbi = day_arr[stringToDate.getDay()];
+  return youbi
+}
+
 export const yesterdayToString = () => {
   const now = new Date();
   const yesterday = new Date(

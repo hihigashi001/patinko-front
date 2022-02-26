@@ -1,9 +1,10 @@
 import { useRouter } from "next/router";
-import { useMemo, useEffect, useState } from "react";
+import { useMemo } from "react";
 import { DataLayout } from "src/layouts/data";
 import { SharedTable } from "src/components/Table";
 import { useQuery } from "react-query";
 import { get_boomtengin_dai_history } from "src/states/APIs";
+import { youbiToString } from "src/utilitys/functions"
 
 const Boomtengin = () => {
   const router = useRouter();
@@ -18,6 +19,10 @@ const Boomtengin = () => {
       {
         Header: "日付",
         accessor: "date_time",
+      },
+      {
+        Header: "曜日",
+        accessor: (row:any) => youbiToString(row.date_time),
       },
       {
         Header: "機種名",
