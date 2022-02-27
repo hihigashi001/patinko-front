@@ -19,9 +19,10 @@ const App = (props: AppProps) => {
     <>
       <Head>
         <title>-patinko-</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <QueryClientProvider client={queryClient}>
-          <props.Component {...props.pageProps} />
+        <props.Component {...props.pageProps} />
       </QueryClientProvider>
     </>
   );
