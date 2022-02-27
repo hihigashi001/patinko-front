@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { HeaderMain } from "src/components/HeaderMain";
+import { BackButton } from "src/components/BackButton";
 
 type Props = {
   children?: ReactNode;
@@ -7,8 +8,9 @@ type Props = {
 
 export const DataLayout = ({ children }: Props) => {
   return (
-    <div className="w-full min-h-full">
+    <div className="container w-full min-h-full">
       <HeaderMain />
+      <BackButton />
       <div className="">{children}</div>
     </div>
   );

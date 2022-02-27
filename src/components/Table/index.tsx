@@ -19,7 +19,7 @@ export const SharedTable: TableComponent = ({ columns, data }) => {
   const { getTableProps } = instance;
 
   return (
-    <table {...getTableProps()}>
+    <table {...getTableProps()} className="w-full">
       <TableHead instance={instance} />
       <TableBody instance={instance} />
       <TableFooter instance={instance} />

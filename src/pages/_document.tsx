@@ -18,6 +18,7 @@ class MyDocument extends Document {
       <Html lang="ja" dir="ltr">
         <Head>
           <meta name="robots" content="noindex,nofollow,noarchive" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         </Head>
         <body className="bg-gray-100">
           <Main />
