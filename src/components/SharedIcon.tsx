@@ -7,6 +7,6 @@ type Props = {
   color?: string;
 };
 
-export const SharedIcon = ({ icon, size = "2x", color = "#0F0F0F" }: Props) => {
+export const SharedIcon = ({ icon, size = "2x", color = "#374151" }: Props) => {
   return <FontAwesomeIcon icon={icon} size={size} color={color} />;
 };

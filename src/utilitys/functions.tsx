@@ -16,6 +16,11 @@ export const youbiToString = (value:string) => {
   return youbi
 }
 
+export const dateYYYYdeleteString = (value:string) => {
+  const res = value.slice(5);
+  return res
+}
+
 export const yesterdayToString = () => {
   const now = new Date();
   const yesterday = new Date(

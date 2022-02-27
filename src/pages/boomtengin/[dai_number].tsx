@@ -4,11 +4,15 @@ import { DataLayout } from "src/layouts/data";
 import { SharedTable } from "src/components/Table";
 import { useQuery } from "react-query";
 import { get_boomtengin_dai_history } from "src/states/APIs";
-import { youbiToString } from "src/utilitys/functions";
+import { youbiToString, dateYYYYdeleteString } from "src/utilitys/functions";
 import { Loding } from "src/components/Loding";
+import { FilterHeader } from "src/components/FilterHeader";
+
 
 const Boomtengin = () => {
-  const [filterData, setFilterData] = useState([]);
+  const [filterData, setFilterData] = useState<any>([]);
+  const [startDate, setStartDate] = useState<string>("");
+  const [endDate, setEndDate] = useState<string>("");
   const router = useRouter();
   const dai_number = router.asPath.slice(12);
   const { isLoading, error, data } = useQuery(
@@ -23,7 +27,7 @@ const Boomtengin = () => {
     () => [
       {
         Header: "日付",
-        accessor: "date_time",
+        accessor: (row: any) => dateYYYYdeleteString(row.date_time),
       },
       {
         Header: "曜日",
@@ -112,12 +116,20 @@ const Boomtengin = () => {
       <div className="flex mb-2 px-4 text-gray-500 text-lg font-bold bg-gray-100">
         <span className="p-2">{dai_number}番台の過去データ</span>
         <a
-          className="p-4 rounded-lg ml-4 text-sm bg-gray-700 hover:bg-gray-500 text-white"
+          className="px-4 py-3 rounded-lg ml-4 text-sm bg-gray-700 hover:bg-gray-500 text-white"
           href={href}
         >
-          公式HPに移動
+          公式HP
         </a>
       </div>
+      <FilterHeader
+        startDate={startDate}
+        setStartDate={setStartDate}
+        endDate={endDate}
+        setEndDate={setEndDate}
+        data={data}
+        setFilterData={setFilterData}
+      />
       <SharedTable columns={columns} data={filterData} />
     </DataLayout>
   );
