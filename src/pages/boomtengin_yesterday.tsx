@@ -65,11 +65,8 @@ const BoomYesterday = () => {
   if (!data) return null;
 
   return (
-    <DataLayout>
-      <div className="flex p-2">
-        <div className="px-4 py-2  text-gray-500 text-lg font-bold text-center">
-          ブーム天神
-        </div>
+    <DataLayout storeName="ブーム天神">
+      <div className="p-2">
         <SharedDataPicker
           value={dateTime!}
           onChange={(date: Date) => {

@@ -64,11 +64,8 @@ const AkasakaYesterday = () => {
   if (!data) return null;
 
   return (
-    <DataLayout>
-      <div className="flex p-2">
-        <div className="px-4 py-2  text-gray-500 text-lg font-bold text-center">
-          プラザ赤坂
-        </div>
+    <DataLayout storeName="プラザ赤坂">
+      <div className="p-2">
         <SharedDataPicker
           value={dateTime!}
           onChange={(date: Date) => {

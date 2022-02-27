@@ -14,6 +14,8 @@ const Akasaka = () => {
     ["get_akasaka_dai_history", dai_number],
     () => get_akasaka_dai_history(dai_number)
   );
+  const href = "http://plaza-grp.pt.teramoba2.com/akasaka/standgraph/?rack_no=" + dai_number
+
 
   const columns = useMemo(
     () => [
@@ -98,9 +100,10 @@ const Akasaka = () => {
   if (!data) return null;
 
   return (
-    <DataLayout>
-      <div className="px-4 text-gray-500 text-lg font-bold bg-gray-100">
-        {dai_number}番台の過去データ
+    <DataLayout storeName="プラザ赤坂">
+      <div className="flex mb-2 px-4 text-gray-500 text-lg font-bold bg-gray-100">
+        <span className="p-2">{dai_number}番台の過去データ</span>
+        <a className="p-4 rounded-lg ml-4 text-sm bg-gray-700 hover:bg-gray-500 text-white" href={href}>公式HPに移動</a>
       </div>
       <SharedTable columns={columns} data={data} />
     </DataLayout>
