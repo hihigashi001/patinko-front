@@ -50,7 +50,7 @@ const BoomYesterday = () => {
   if (!data) return null;
 
   return (
-    <DataLayout>
+    <DataLayout storeName="">
       <div className="px-4 text-gray-500 text-lg font-bold bg-gray-100">
         サイトセブンの全店舗データ
       </div>
