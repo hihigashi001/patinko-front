@@ -19,8 +19,10 @@ class MyDocument extends Document {
         <Head>
           <meta name="robots" content="noindex,nofollow,noarchive" />
         </Head>
-        <body className="bg-gray-100">
+        <body className="m-0 p-0 bg-gray-100">
+          <div className="md:w-10/12 mx-auto">
           <Main />
+          </div>
           <NextScript />
         </body>
       </Html>

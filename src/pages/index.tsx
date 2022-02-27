@@ -10,7 +10,7 @@ const Home = () => {
     <HomeLayout>
       <div className="p-4">
         <div className="mb-2 p-4 flex flex-col gap-8 max-w-md">
-          <div className="text-gray-700">※対象データは、游タイム搭載機</div>
+          <div className="text-gray-700">※対象データは、4円パチンコ游タイム搭載機</div>
           <Link href="/boomtengin_yesterday">
             <a className="flex p-8 text-2xl text-white bg-gray-700 hover:bg-gray-500 rounded-lg">
               <SharedIcon icon={faTableList} color="FFF" size="2x" />
