@@ -27,7 +27,7 @@ const Boomtengin = () => {
     () => [
       {
         Header: "日付",
-        accessor: (row: any) => dateYYYYdeleteString(row.date_time),
+        accessor: "date_time",
       },
       {
         Header: "曜日",
