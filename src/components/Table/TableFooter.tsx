@@ -9,7 +9,7 @@ export const TableFooter = <T extends object>({
 }: TableFooterProps<T>) => {
   const { footerGroups } = instance;
   return (
-    <thead className="sticky top-0 z-50 bg-gray-100">
+    <thead className="bg-gray-100">
       {footerGroups.map((footerGroup) => (
         <tr {...footerGroup.getFooterGroupProps()}>
           {footerGroup.headers.map((column) => (

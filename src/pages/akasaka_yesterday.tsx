@@ -9,6 +9,7 @@ import {
   yesterdayToString,
   cellFunction_akasaka,
 } from "src/utilitys/functions";
+import { Loding } from "src/components/Loding"
 
 const AkasakaYesterday = () => {
   const yesterday = yesterdayToString();
@@ -58,7 +59,7 @@ const AkasakaYesterday = () => {
     []
   );
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <Loding />;
   if (error) return <p>Error: {JSON.stringify(error)}</p>;
   if (!data) return null;
 

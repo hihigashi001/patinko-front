@@ -5,6 +5,8 @@ import { SharedTable } from "src/components/Table";
 import { useQuery } from "react-query";
 import { get_boomtengin_dai_history } from "src/states/APIs";
 import { youbiToString } from "src/utilitys/functions"
+import { Loding } from "src/components/Loding"
+
 
 const Boomtengin = () => {
   const router = useRouter();
@@ -93,7 +95,7 @@ const Boomtengin = () => {
     []
   );
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <Loding />;
   if (error) return <p>Error: {JSON.stringify(error)}</p>;
   if (!data) return null;
 

@@ -4,8 +4,8 @@ import { DataLayout } from "src/layouts/data";
 import { SharedTable } from "src/components/Table";
 import { useQuery } from "react-query";
 import { get_akasaka_dai_history } from "src/states/APIs";
-import { youbiToString } from "src/utilitys/functions"
-
+import { youbiToString } from "src/utilitys/functions";
+import { Loding } from "src/components/Loding";
 
 const Akasaka = () => {
   const router = useRouter();
@@ -23,7 +23,7 @@ const Akasaka = () => {
       },
       {
         Header: "曜日",
-        accessor: (row:any) => youbiToString(row.date_time),
+        accessor: (row: any) => youbiToString(row.date_time),
       },
       {
         Header: "機種名",
@@ -93,7 +93,7 @@ const Akasaka = () => {
     []
   );
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <Loding />;
   if (error) return <p>Error: {JSON.stringify(error)}</p>;
   if (!data) return null;
 
