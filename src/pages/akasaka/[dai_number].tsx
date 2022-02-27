@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { DataLayout } from "src/layouts/data";
 import { SharedTable } from "src/components/Table";
 import { useQuery } from "react-query";
@@ -8,6 +8,7 @@ import { youbiToString } from "src/utilitys/functions";
 import { Loding } from "src/components/Loding";
 
 const Akasaka = () => {
+  const [filterData, setFilterData] = useState([]);
   const router = useRouter();
   const dai_number = router.asPath.slice(9);
   const { isLoading, error, data } = useQuery(
@@ -95,6 +96,12 @@ const Akasaka = () => {
     []
   );
 
+  useEffect(() => {
+    if (data != undefined) {
+      setFilterData(data);
+    }
+  }, [data]);
+
   if (isLoading) return <Loding />;
   if (error) return <p>Error: {JSON.stringify(error)}</p>;
   if (!data) return null;
@@ -105,7 +112,7 @@ const Akasaka = () => {
         <span className="p-2">{dai_number}番台の過去データ</span>
         <a className="p-4 rounded-lg ml-4 text-sm bg-gray-700 hover:bg-gray-500 text-white" href={href}>公式HPに移動</a>
       </div>
-      <SharedTable columns={columns} data={data} />
+      <SharedTable columns={columns} data={filterData} />
     </DataLayout>
   );
 };

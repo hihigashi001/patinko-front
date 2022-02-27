@@ -1,21 +1,23 @@
 import { useRouter } from "next/router";
-import { useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { DataLayout } from "src/layouts/data";
 import { SharedTable } from "src/components/Table";
 import { useQuery } from "react-query";
 import { get_boomtengin_dai_history } from "src/states/APIs";
-import { youbiToString } from "src/utilitys/functions"
-import { Loding } from "src/components/Loding"
-
+import { youbiToString } from "src/utilitys/functions";
+import { Loding } from "src/components/Loding";
 
 const Boomtengin = () => {
+  const [filterData, setFilterData] = useState([]);
   const router = useRouter();
   const dai_number = router.asPath.slice(12);
   const { isLoading, error, data } = useQuery(
     ["get_boomtengin_dai_history", dai_number],
     () => get_boomtengin_dai_history(dai_number)
   );
-  const href = "http://boom-rocky.pt.teramoba2.com/boomtengin/standgraph/?rack_no=" + dai_number
+  const href =
+    "http://boom-rocky.pt.teramoba2.com/boomtengin/standgraph/?rack_no=" +
+    dai_number;
 
   const columns = useMemo(
     () => [
@@ -25,7 +27,7 @@ const Boomtengin = () => {
       },
       {
         Header: "曜日",
-        accessor: (row:any) => youbiToString(row.date_time),
+        accessor: (row: any) => youbiToString(row.date_time),
       },
       {
         Header: "機種名",
@@ -95,6 +97,12 @@ const Boomtengin = () => {
     []
   );
 
+  useEffect(() => {
+    if (data != undefined) {
+      setFilterData(data);
+    }
+  }, [data]);
+
   if (isLoading) return <Loding />;
   if (error) return <p>Error: {JSON.stringify(error)}</p>;
   if (!data) return null;
@@ -103,9 +111,14 @@ const Boomtengin = () => {
     <DataLayout storeName="ブーム天神">
       <div className="flex mb-2 px-4 text-gray-500 text-lg font-bold bg-gray-100">
         <span className="p-2">{dai_number}番台の過去データ</span>
-        <a className="p-4 rounded-lg ml-4 text-sm bg-gray-700 hover:bg-gray-500 text-white" href={href}>公式HPに移動</a>
+        <a
+          className="p-4 rounded-lg ml-4 text-sm bg-gray-700 hover:bg-gray-500 text-white"
+          href={href}
+        >
+          公式HPに移動
+        </a>
       </div>
-      <SharedTable columns={columns} data={data} />
+      <SharedTable columns={columns} data={filterData} />
     </DataLayout>
   );
 };
