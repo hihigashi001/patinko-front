@@ -34,7 +34,27 @@ export const PageMoveHeader = ({
           </a>
         </Link>
       )}
-      <span className="p-3">{dai_number}番台</span>
+      {store_name == "ブーム天神" ? (
+        <a
+          className="px-4 py-4 rounded-lg mx-4 text-sm bg-gray-700 hover:bg-gray-500 text-white"
+          href={
+            "http://boom-rocky.pt.teramoba2.com/boomtengin/standgraph/?rack_no=" +
+            dai_number
+          }
+        >
+          {dai_number} 番台のデータ
+        </a>
+      ) : (
+        <a
+          className="px-4 py-4 rounded-lg mx-4 text-sm bg-gray-700 hover:bg-gray-500 text-white"
+          href={
+            "http://plaza-grp.pt.teramoba2.com/akasaka/standgraph/?rack_no=" +
+            dai_number
+          }
+        >
+          {dai_number} 番台のデータ
+        </a>
+      )}
       {next_dai_number == "0" ? (
         <div className="p-2 bg-gray-500">
           <SharedIcon icon={faArrowRight} />
@@ -46,24 +66,6 @@ export const PageMoveHeader = ({
           </a>
         </Link>
       )}
-      {
-        store_name == "ブーム天神" ? (
-          <a
-          className="px-4 py-3 rounded-lg ml-4 text-sm bg-gray-700 hover:bg-gray-500 text-white"
-          href={"http://boom-rocky.pt.teramoba2.com/boomtengin/standgraph/?rack_no=" + dai_number}
-        >
-          公式HP
-        </a>
-        ) : (
-          <a
-          className="px-4 py-3 rounded-lg ml-4 text-sm bg-gray-700 hover:bg-gray-500 text-white"
-          href={"http://plaza-grp.pt.teramoba2.com/akasaka/standgraph/?rack_no=" + dai_number}
-        >
-          公式HP
-        </a>
-        )
-      }
-
     </div>
   );
 };

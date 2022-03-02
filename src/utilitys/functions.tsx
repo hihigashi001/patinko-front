@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import { addDays } from 'date-fns'
 import Link from "next/link";
 
 export const formatStringToFlag = (value: any) => {
@@ -34,6 +35,14 @@ export const yesterdayToString = () => {
 
 export const dateToString = (date:any) => {
   return format(date, "yyyy-MM-dd");
+};
+
+export const addDate = (date:any) => {
+  return addDays(new Date(date), 1)
+};
+
+export const subtractDate = (date:any) => {
+  return addDays(new Date(date), -1)
 };
 
 export const cellFunction_boomtengin = ({value}: any) => {

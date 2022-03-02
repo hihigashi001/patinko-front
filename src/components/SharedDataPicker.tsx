@@ -21,7 +21,7 @@ export const SharedDataPicker = ({ value, onChange, error = "" }: Props) => {
             onChange={onChange}
             selected={!value ? null : new Date(value)}
             dateFormat="対象データ  MM月dd日"
-            className="focus:outline-none px-4 py-2 bg-gray-700 hover:bg-gray-500 text-white rounded-lg text-lg font-bold"
+            className="focus:outline-none px-4 py-4 bg-gray-700 hover:bg-gray-500 text-white rounded-lg text-lg font-bold"
           />
         </div>
         <span className="text-red-400">{error}</span>

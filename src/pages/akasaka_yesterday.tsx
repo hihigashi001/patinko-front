@@ -1,15 +1,17 @@
 import { useMemo, useState } from "react";
 import { DataLayout } from "src/layouts/data";
 import { SharedTable } from "src/components/Table";
-import { SharedDataPicker } from "src/components/SharedDataPicker";
 import { useQuery } from "react-query";
 import { get_akasaka_all } from "src/states/APIs";
 import {
-  dateToString,
+  subtractDate,
+  addDate,
   yesterdayToString,
   cellFunction_akasaka,
+  dateToString,
 } from "src/utilitys/functions";
 import { Loding } from "src/components/Loding"
+import { PageMoveHeader2 } from "src/components/PageMoveHeader2";
 
 const AkasakaYesterday = () => {
   const yesterday = yesterdayToString();
@@ -63,16 +65,24 @@ const AkasakaYesterday = () => {
   if (error) return <p>Error: {JSON.stringify(error)}</p>;
   if (!data) return null;
 
+  const next_href = () => {
+    const nextDate = addDate(dateTime)
+    setDateTime(dateToString(nextDate))
+  }
+
+  const prev_href = () => {
+    const prevDate = subtractDate(dateTime)
+    setDateTime(dateToString(prevDate))
+  }
+
   return (
     <DataLayout storeName="プラザ赤坂">
-      <div className="p-2">
-        <SharedDataPicker
-          value={dateTime!}
-          onChange={(date: Date) => {
-            setDateTime(dateToString(date));
-          }}
+        <PageMoveHeader2
+          next_href={next_href}
+          prev_href={prev_href}
+          dateTime={dateTime}
+          setDateTime={setDateTime}
         />
-      </div>
       <SharedTable columns={columns} data={data} />
     </DataLayout>
   );
