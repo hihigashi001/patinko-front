@@ -3,10 +3,11 @@ import { useState, useMemo, useEffect } from "react";
 import { DataLayout } from "src/layouts/data";
 import { SharedTable } from "src/components/Table";
 import { useQuery } from "react-query";
-import { get_boomtengin_dai_history } from "src/states/APIs";
-import { youbiToString, dateYYYYdeleteString } from "src/utilitys/functions";
+import { get_boomtengin_dai_history, get_page_choice } from "src/states/APIs";
+import { youbiToString } from "src/utilitys/functions";
 import { Loding } from "src/components/Loding";
 import { FilterHeader } from "src/components/FilterHeader";
+import { PageMoveHeader } from "src/components/PageMoveHeader";
 
 
 const Boomtengin = () => {
@@ -19,9 +20,13 @@ const Boomtengin = () => {
     ["get_boomtengin_dai_history", dai_number],
     () => get_boomtengin_dai_history(dai_number)
   );
-  const href =
-    "http://boom-rocky.pt.teramoba2.com/boomtengin/standgraph/?rack_no=" +
-    dai_number;
+  const {
+    isLoading: page_isLoading,
+    error: page_error,
+    data: page_data,
+  } = useQuery(["get_page_choice", dai_number], () =>
+    get_page_choice("boomtengin", dai_number)
+  );
 
   const columns = useMemo(
     () => [
@@ -107,21 +112,26 @@ const Boomtengin = () => {
     }
   }, [data]);
 
+  if (page_isLoading) return <Loding />;
   if (isLoading) return <Loding />;
+  if (page_error) return <p>Error: {JSON.stringify(error)}</p>;
   if (error) return <p>Error: {JSON.stringify(error)}</p>;
+  if (!page_data) return null;
   if (!data) return null;
+
+  const next_href = "/boomtengin/" + page_data.next_dai_number;
+  const prev_href = "/boomtengin/" + page_data.prev_dai_number;
 
   return (
     <DataLayout storeName="ブーム天神">
-      <div className="flex mb-2 px-4 text-gray-500 text-lg font-bold bg-gray-100">
-        <span className="p-2">{dai_number}番台の過去データ</span>
-        <a
-          className="px-4 py-3 rounded-lg ml-4 text-sm bg-gray-700 hover:bg-gray-500 text-white"
-          href={href}
-        >
-          公式HP
-        </a>
-      </div>
+      <PageMoveHeader
+        next_dai_number={page_data.next_dai_number}
+        prev_dai_number={page_data.prev_dai_number}
+        next_href={next_href}
+        prev_href={prev_href}
+        dai_number={dai_number}
+        store_name={"ブーム天神"}
+      />
       <FilterHeader
         startDate={startDate}
         setStartDate={setStartDate}

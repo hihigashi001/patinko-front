@@ -39,3 +39,9 @@ export const get_site_seven_all = async () => {
   return res.data;
 };
 
+export const get_page_choice = async (store_name: string, dai_number: any) => {
+  const res = await axios.get(
+    `${apiUrl}/page_choice/?store_name=${store_name}&dai_number=${dai_number}`
+  );
+  return res.data;
+};
