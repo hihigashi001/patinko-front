@@ -1,26 +1,21 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { DataLayout } from "src/layouts/data";
 import { SharedTable } from "src/components/Table";
-import { useQuery } from "react-query";
-import { get_boomtengin_all } from "src/states/APIs";
-import {
-  subtractDate,
-  addDate,
-  yesterdayToString,
-  cellFunction_boomtengin,
-  dateToString,
-} from "src/utilitys/functions";
-import { Loding } from "src/components/Loding"
+import { cellFunction_boomtengin } from "src/utilitys/functions";
+import { Loding } from "src/components/Loding";
 import { PageMoveHeader2 } from "src/components/PageMoveHeader2";
+import { useBoomtenginYesterday } from "src/states/useBoomtenginYesterday";
 
 const BoomYesterday = () => {
-  const yesterday = yesterdayToString();
-  const [dateTime, setDateTime] = useState(yesterday);
-
-  const { isLoading, error, data } = useQuery(
-    ["get_boomtengin_all", dateTime],
-    () => get_boomtengin_all(dateTime)
-  );
+  const {
+    isLoading,
+    error,
+    data,
+    dateTime,
+    setDateTime,
+    next_href,
+    prev_href,
+  } = useBoomtenginYesterday();
 
   const columns = useMemo(
     () => [
@@ -65,24 +60,14 @@ const BoomYesterday = () => {
   if (error) return <p>Error: {JSON.stringify(error)}</p>;
   if (!data) return null;
 
-  const next_href = () => {
-    const nextDate = addDate(dateTime)
-    setDateTime(dateToString(nextDate))
-  }
-
-  const prev_href = () => {
-    const prevDate = subtractDate(dateTime)
-    setDateTime(dateToString(prevDate))
-  }
-
   return (
     <DataLayout storeName="ブーム天神">
-        <PageMoveHeader2
-          next_href={next_href}
-          prev_href={prev_href}
-          dateTime={dateTime}
-          setDateTime={setDateTime}
-        />
+      <PageMoveHeader2
+        next_href={next_href}
+        prev_href={prev_href}
+        dateTime={dateTime}
+        setDateTime={setDateTime}
+      />
       <SharedTable columns={columns} data={data} />
     </DataLayout>
   );

@@ -23,11 +23,6 @@ const Home = () => {
               <span className="px-6 py-2">プラザ赤坂</span>
             </a>
           </Link>
-          {/* <Link href="/site-seven">
-            <a className="p-4 text-base text-white bg-gray-700 hover:bg-gray-500 rounded-lg">
-              サイトセブンの2店舗データ
-            </a>
-          </Link> */}
         </div>
       </div>
     </HomeLayout>

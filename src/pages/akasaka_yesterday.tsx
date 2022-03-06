@@ -1,26 +1,21 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { DataLayout } from "src/layouts/data";
 import { SharedTable } from "src/components/Table";
-import { useQuery } from "react-query";
-import { get_akasaka_all } from "src/states/APIs";
-import {
-  subtractDate,
-  addDate,
-  yesterdayToString,
-  cellFunction_akasaka,
-  dateToString,
-} from "src/utilitys/functions";
-import { Loding } from "src/components/Loding"
+import { cellFunction_akasaka } from "src/utilitys/functions";
+import { Loding } from "src/components/Loding";
 import { PageMoveHeader2 } from "src/components/PageMoveHeader2";
+import { useAkasakaYesterday } from "src/states/useAkasakaYesterday";
 
-const AkasakaYesterday = () => {
-  const yesterday = yesterdayToString();
-  const [dateTime, setDateTime] = useState(yesterday);
-
-  const { isLoading, error, data } = useQuery(
-    ["get_akasaka_all", dateTime],
-    () => get_akasaka_all(dateTime)
-  );
+const BoomYesterday = () => {
+  const {
+    isLoading,
+    error,
+    data,
+    dateTime,
+    setDateTime,
+    next_href,
+    prev_href,
+  } = useAkasakaYesterday();
 
   const columns = useMemo(
     () => [
@@ -65,27 +60,17 @@ const AkasakaYesterday = () => {
   if (error) return <p>Error: {JSON.stringify(error)}</p>;
   if (!data) return null;
 
-  const next_href = () => {
-    const nextDate = addDate(dateTime)
-    setDateTime(dateToString(nextDate))
-  }
-
-  const prev_href = () => {
-    const prevDate = subtractDate(dateTime)
-    setDateTime(dateToString(prevDate))
-  }
-
   return (
     <DataLayout storeName="プラザ赤坂">
-        <PageMoveHeader2
-          next_href={next_href}
-          prev_href={prev_href}
-          dateTime={dateTime}
-          setDateTime={setDateTime}
-        />
+      <PageMoveHeader2
+        next_href={next_href}
+        prev_href={prev_href}
+        dateTime={dateTime}
+        setDateTime={setDateTime}
+      />
       <SharedTable columns={columns} data={data} />
     </DataLayout>
   );
 };
 
-export default AkasakaYesterday;
+export default BoomYesterday;
