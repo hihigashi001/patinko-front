@@ -1,32 +1,28 @@
-import { useRouter } from "next/router";
-import { useState, useMemo, useEffect } from "react";
+import { useMemo } from "react";
 import { DataLayout } from "src/layouts/data";
 import { SharedTable } from "src/components/Table";
-import { useQuery } from "react-query";
-import { get_boomtengin_dai_history, get_page_choice } from "src/states/APIs";
 import { youbiToString } from "src/utilitys/functions";
 import { Loding } from "src/components/Loding";
 import { FilterHeader } from "src/components/FilterHeader";
 import { PageMoveHeader } from "src/components/PageMoveHeader";
-
+import { useBoomtengin } from "src/states/useBoomtengin";
 
 const Boomtengin = () => {
-  const [filterData, setFilterData] = useState<any>([]);
-  const [startDate, setStartDate] = useState<string>("");
-  const [endDate, setEndDate] = useState<string>("");
-  const router = useRouter();
-  const dai_number = router.asPath.slice(12);
-  const { isLoading, error, data } = useQuery(
-    ["get_boomtengin_dai_history", dai_number],
-    () => get_boomtengin_dai_history(dai_number)
-  );
   const {
-    isLoading: page_isLoading,
-    error: page_error,
-    data: page_data,
-  } = useQuery(["get_page_choice", dai_number], () =>
-    get_page_choice("boomtengin", dai_number)
-  );
+    filterData,
+    setFilterData,
+    startDate,
+    setStartDate,
+    endDate,
+    setEndDate,
+    dai_number,
+    isLoading,
+    error,
+    data,
+    page_isLoading,
+    page_error,
+    page_data,
+  } = useBoomtengin();
 
   const columns = useMemo(
     () => [
@@ -105,12 +101,6 @@ const Boomtengin = () => {
     ],
     []
   );
-
-  useEffect(() => {
-    if (data != undefined) {
-      setFilterData(data);
-    }
-  }, [data]);
 
   if (page_isLoading) return <Loding />;
   if (isLoading) return <Loding />;
